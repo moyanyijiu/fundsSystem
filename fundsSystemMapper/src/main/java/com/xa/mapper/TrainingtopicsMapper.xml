@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xa.mapper.TrainingtopicsMapper" >
+  <resultMap id="BaseResultMap" type="com.xa.pojo.Trainingtopics" >
+    <id column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="company" property="company" jdbcType="VARCHAR" />
+    <result column="topics" property="topics" jdbcType="VARCHAR" />
+    <result column="courseware" property="courseware" jdbcType="VARCHAR" />
+    <result column="turl" property="turl" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="tdelete" property="tdelete" jdbcType="INTEGER" />
+    <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tid, company, topics, courseware, turl, content, tdelete, redundancythr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xa.pojo.TrainingtopicsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from trainingtopics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trainingtopics
+    where tid = #{tid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trainingtopics
+    where tid = #{tid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xa.pojo.TrainingtopicsExample" >
+    delete from trainingtopics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xa.pojo.Trainingtopics" >
+    insert into trainingtopics (tid, company, topics, 
+      courseware, turl, content, 
+      tdelete, redundancythr)
+    values (#{tid,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, #{topics,jdbcType=VARCHAR}, 
+      #{courseware,jdbcType=VARCHAR}, #{turl,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{tdelete,jdbcType=INTEGER}, #{redundancythr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xa.pojo.Trainingtopics" >
+    insert into trainingtopics
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="topics != null" >
+        topics,
+      </if>
+      <if test="courseware != null" >
+        courseware,
+      </if>
+      <if test="turl != null" >
+        turl,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="tdelete != null" >
+        tdelete,
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="topics != null" >
+        #{topics,jdbcType=VARCHAR},
+      </if>
+      <if test="courseware != null" >
+        #{courseware,jdbcType=VARCHAR},
+      </if>
+      <if test="turl != null" >
+        #{turl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="tdelete != null" >
+        #{tdelete,jdbcType=INTEGER},
+      </if>
+      <if test="redundancythr != null" >
+        #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xa.pojo.TrainingtopicsExample" resultType="java.lang.Integer" >
+    select count(*) from trainingtopics
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update trainingtopics
+    <set >
+      <if test="record.tid != null" >
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.topics != null" >
+        topics = #{record.topics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.courseware != null" >
+        courseware = #{record.courseware,jdbcType=VARCHAR},
+      </if>
+      <if test="record.turl != null" >
+        turl = #{record.turl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tdelete != null" >
+        tdelete = #{record.tdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.redundancythr != null" >
+        redundancythr = #{record.redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update trainingtopics
+    set tid = #{record.tid,jdbcType=INTEGER},
+      company = #{record.company,jdbcType=VARCHAR},
+      topics = #{record.topics,jdbcType=VARCHAR},
+      courseware = #{record.courseware,jdbcType=VARCHAR},
+      turl = #{record.turl,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      tdelete = #{record.tdelete,jdbcType=INTEGER},
+      redundancythr = #{record.redundancythr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xa.pojo.Trainingtopics" >
+    update trainingtopics
+    <set >
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="topics != null" >
+        topics = #{topics,jdbcType=VARCHAR},
+      </if>
+      <if test="courseware != null" >
+        courseware = #{courseware,jdbcType=VARCHAR},
+      </if>
+      <if test="turl != null" >
+        turl = #{turl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="tdelete != null" >
+        tdelete = #{tdelete,jdbcType=INTEGER},
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr = #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xa.pojo.Trainingtopics" >
+    update trainingtopics
+    set company = #{company,jdbcType=VARCHAR},
+      topics = #{topics,jdbcType=VARCHAR},
+      courseware = #{courseware,jdbcType=VARCHAR},
+      turl = #{turl,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      tdelete = #{tdelete,jdbcType=INTEGER},
+      redundancythr = #{redundancythr,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=INTEGER}
+  </update>
+</mapper>

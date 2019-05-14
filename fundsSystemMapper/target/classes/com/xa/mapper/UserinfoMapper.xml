@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xa.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xa.pojo.Userinfo" >
+    <id column="uiid" property="uiid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="preferredcontact" property="preferredcontact" jdbcType="VARCHAR" />
+    <result column="contacttime" property="contacttime" jdbcType="VARCHAR" />
+    <result column="isonethousand" property="isonethousand" jdbcType="INTEGER" />
+    <result column="capid" property="capid" jdbcType="INTEGER" />
+    <result column="vocationalstatus" property="vocationalstatus" jdbcType="VARCHAR" />
+    <result column="fortheenterprise" property="fortheenterprise" jdbcType="VARCHAR" />
+    <result column="companytype" property="companytype" jdbcType="VARCHAR" />
+    <result column="revenue" property="revenue" jdbcType="VARCHAR" />
+    <result column="educationalstatus" property="educationalstatus" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="redundancyone" property="redundancyone" jdbcType="VARCHAR" />
+    <result column="redundancytwo" property="redundancytwo" jdbcType="VARCHAR" />
+    <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uiid, uid, preferredcontact, contacttime, isonethousand, capid, vocationalstatus, 
+    fortheenterprise, companytype, revenue, educationalstatus, status, redundancyone, 
+    redundancytwo, redundancythr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xa.pojo.UserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where uiid = #{uiid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfo
+    where uiid = #{uiid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xa.pojo.UserinfoExample" >
+    delete from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xa.pojo.Userinfo" >
+    insert into userinfo (uiid, uid, preferredcontact, 
+      contacttime, isonethousand, capid, 
+      vocationalstatus, fortheenterprise, companytype, 
+      revenue, educationalstatus, status, 
+      redundancyone, redundancytwo, redundancythr
+      )
+    values (#{uiid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{preferredcontact,jdbcType=VARCHAR}, 
+      #{contacttime,jdbcType=VARCHAR}, #{isonethousand,jdbcType=INTEGER}, #{capid,jdbcType=INTEGER}, 
+      #{vocationalstatus,jdbcType=VARCHAR}, #{fortheenterprise,jdbcType=VARCHAR}, #{companytype,jdbcType=VARCHAR}, 
+      #{revenue,jdbcType=VARCHAR}, #{educationalstatus,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{redundancyone,jdbcType=VARCHAR}, #{redundancytwo,jdbcType=VARCHAR}, #{redundancythr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xa.pojo.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uiid != null" >
+        uiid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="preferredcontact != null" >
+        preferredcontact,
+      </if>
+      <if test="contacttime != null" >
+        contacttime,
+      </if>
+      <if test="isonethousand != null" >
+        isonethousand,
+      </if>
+      <if test="capid != null" >
+        capid,
+      </if>
+      <if test="vocationalstatus != null" >
+        vocationalstatus,
+      </if>
+      <if test="fortheenterprise != null" >
+        fortheenterprise,
+      </if>
+      <if test="companytype != null" >
+        companytype,
+      </if>
+      <if test="revenue != null" >
+        revenue,
+      </if>
+      <if test="educationalstatus != null" >
+        educationalstatus,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="redundancyone != null" >
+        redundancyone,
+      </if>
+      <if test="redundancytwo != null" >
+        redundancytwo,
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uiid != null" >
+        #{uiid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="preferredcontact != null" >
+        #{preferredcontact,jdbcType=VARCHAR},
+      </if>
+      <if test="contacttime != null" >
+        #{contacttime,jdbcType=VARCHAR},
+      </if>
+      <if test="isonethousand != null" >
+        #{isonethousand,jdbcType=INTEGER},
+      </if>
+      <if test="capid != null" >
+        #{capid,jdbcType=INTEGER},
+      </if>
+      <if test="vocationalstatus != null" >
+        #{vocationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fortheenterprise != null" >
+        #{fortheenterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="companytype != null" >
+        #{companytype,jdbcType=VARCHAR},
+      </if>
+      <if test="revenue != null" >
+        #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="educationalstatus != null" >
+        #{educationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="redundancyone != null" >
+        #{redundancyone,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancytwo != null" >
+        #{redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancythr != null" >
+        #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xa.pojo.UserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userinfo
+    <set >
+      <if test="record.uiid != null" >
+        uiid = #{record.uiid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.preferredcontact != null" >
+        preferredcontact = #{record.preferredcontact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacttime != null" >
+        contacttime = #{record.contacttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isonethousand != null" >
+        isonethousand = #{record.isonethousand,jdbcType=INTEGER},
+      </if>
+      <if test="record.capid != null" >
+        capid = #{record.capid,jdbcType=INTEGER},
+      </if>
+      <if test="record.vocationalstatus != null" >
+        vocationalstatus = #{record.vocationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fortheenterprise != null" >
+        fortheenterprise = #{record.fortheenterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companytype != null" >
+        companytype = #{record.companytype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.revenue != null" >
+        revenue = #{record.revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.educationalstatus != null" >
+        educationalstatus = #{record.educationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.redundancyone != null" >
+        redundancyone = #{record.redundancyone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redundancytwo != null" >
+        redundancytwo = #{record.redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.redundancythr != null" >
+        redundancythr = #{record.redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userinfo
+    set uiid = #{record.uiid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      preferredcontact = #{record.preferredcontact,jdbcType=VARCHAR},
+      contacttime = #{record.contacttime,jdbcType=VARCHAR},
+      isonethousand = #{record.isonethousand,jdbcType=INTEGER},
+      capid = #{record.capid,jdbcType=INTEGER},
+      vocationalstatus = #{record.vocationalstatus,jdbcType=VARCHAR},
+      fortheenterprise = #{record.fortheenterprise,jdbcType=VARCHAR},
+      companytype = #{record.companytype,jdbcType=VARCHAR},
+      revenue = #{record.revenue,jdbcType=VARCHAR},
+      educationalstatus = #{record.educationalstatus,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      redundancyone = #{record.redundancyone,jdbcType=VARCHAR},
+      redundancytwo = #{record.redundancytwo,jdbcType=VARCHAR},
+      redundancythr = #{record.redundancythr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xa.pojo.Userinfo" >
+    update userinfo
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="preferredcontact != null" >
+        preferredcontact = #{preferredcontact,jdbcType=VARCHAR},
+      </if>
+      <if test="contacttime != null" >
+        contacttime = #{contacttime,jdbcType=VARCHAR},
+      </if>
+      <if test="isonethousand != null" >
+        isonethousand = #{isonethousand,jdbcType=INTEGER},
+      </if>
+      <if test="capid != null" >
+        capid = #{capid,jdbcType=INTEGER},
+      </if>
+      <if test="vocationalstatus != null" >
+        vocationalstatus = #{vocationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="fortheenterprise != null" >
+        fortheenterprise = #{fortheenterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="companytype != null" >
+        companytype = #{companytype,jdbcType=VARCHAR},
+      </if>
+      <if test="revenue != null" >
+        revenue = #{revenue,jdbcType=VARCHAR},
+      </if>
+      <if test="educationalstatus != null" >
+        educationalstatus = #{educationalstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="redundancyone != null" >
+        redundancyone = #{redundancyone,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancytwo != null" >
+        redundancytwo = #{redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr = #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uiid = #{uiid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xa.pojo.Userinfo" >
+    update userinfo
+    set uid = #{uid,jdbcType=INTEGER},
+      preferredcontact = #{preferredcontact,jdbcType=VARCHAR},
+      contacttime = #{contacttime,jdbcType=VARCHAR},
+      isonethousand = #{isonethousand,jdbcType=INTEGER},
+      capid = #{capid,jdbcType=INTEGER},
+      vocationalstatus = #{vocationalstatus,jdbcType=VARCHAR},
+      fortheenterprise = #{fortheenterprise,jdbcType=VARCHAR},
+      companytype = #{companytype,jdbcType=VARCHAR},
+      revenue = #{revenue,jdbcType=VARCHAR},
+      educationalstatus = #{educationalstatus,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      redundancyone = #{redundancyone,jdbcType=VARCHAR},
+      redundancytwo = #{redundancytwo,jdbcType=VARCHAR},
+      redundancythr = #{redundancythr,jdbcType=VARCHAR}
+    where uiid = #{uiid,jdbcType=INTEGER}
+  </update>
+</mapper>
