@@ -1,6 +1,8 @@
 package com.xa.service;
 
+import com.xa.mapper.CustodianlistMapper;
 import com.xa.mapper.ProductsMapper;
+import com.xa.pojo.Custodianlist;
 import com.xa.pojo.Products;
 import org.junit.Test;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.Map;
 public class ProductsServiceImpl implements ProductsService {
     @Resource
     private ProductsMapper productsMapper;
+    @Resource
+    private CustodianlistMapper custodianlistMapper;
 
     @Override
     public List<Products> getAllProducts() {
@@ -22,6 +26,12 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public List<Products> getAllProductsByField(Map map) {
         return productsMapper.selectByField(map);
+    }
+
+    @Override
+    public Custodianlist getCustodianlistById(int id) {
+
+        return custodianlistMapper.selectByPrimaryKey(id) ;
     }
 }
 

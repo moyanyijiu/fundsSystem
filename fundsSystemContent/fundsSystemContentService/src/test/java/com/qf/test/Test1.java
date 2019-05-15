@@ -1,5 +1,6 @@
 package com.qf.test;
 
+import com.xa.pojo.Custodianlist;
 import com.xa.pojo.Products;
 import com.xa.service.ProductsService;
 import org.junit.Test;
@@ -19,12 +20,16 @@ public class Test1 {
     private ProductsService productsService;
     @Test
     public void testGetAllProducts(){
+        /*Custodianlist custodianlistById = productsService.getCustodianlistById(1);
+        System.out.println(custodianlistById);*/
         /*List<Products> allProducts = productsService.getAllProducts();
         System.out.println(allProducts);*/
+
         HashMap<String, String > map = new HashMap<>();
         map.put("biddeadline","0~3个月");
         map.put("ptype",null);
         map.put("riskgrade",null);
+        System.out.println(map);
         List<Products> allProductsByField = productsService.getAllProductsByField(map);
         for (Products p:allProductsByField
              ) {

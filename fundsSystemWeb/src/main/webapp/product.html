@@ -109,8 +109,8 @@
     <td>
      <div class="proList">
       <a class="proSerCur" href="javascript:;">全部</a>
-      <a href="javascript:;">二级市场</a>
-      <a href="javascript:;">PEVC</a>
+      <a onclick="queryField('1','二级市场')">二级市场</a>
+      <a onclick="queryField('1','PEVC')">PEVC</a>
      </div><!--proList/-->
     </td>
    </tr>
@@ -119,11 +119,11 @@
     <td>
      <div class="proList">
       <a class="proSerCur" href="javascript:;">全部</a>
-      <a href="javascript:;">安全型　</a>
-      <a href="javascript:;">保守型</a>
-      <a href="javascript:;">　稳健型</a>
-      <a href="javascript:;">　积极型</a>
-      <a href="javascript:;">　激性型</a>
+      <a onclick="queryField('2','安全型')">安全型</a>
+      <a onclick="queryField('2','保守型')">保守型</a>
+      <a onclick="queryField('2','稳健型')">稳健型</a>
+      <a onclick="queryField('2','积极型')">积极型</a>
+      <a onclick="queryField('2','激进型')">激进型</a>
      </div><!--proList/-->
     </td>
    </tr>
@@ -132,10 +132,10 @@
     <td>
      <div class="proList">
       <a class="proSerCur" href="javascript:;">全部</a>
-      <a href="javascript:;">0~3个月</a>
-      <a href="javascript:;">4~6个月</a>
-      <a href="javascript:;">7~12个月</a>
-      <a href="javascript:;">12个月以上</a>
+      <a onclick="queryField('3','0~3个月')">0~3个月</a>
+      <a onclick="queryField('3','4~6个月')">4~6个月</a>
+      <a onclick="queryField('3','7~12个月')">7~12个月</a>
+      <a onclick="queryField('3','12个月以上')">12个月以上</a>
      </div><!--proList/-->
     </td>
    </tr>
@@ -177,41 +177,7 @@
    <div class="proZt">
     <span>在售</span>
     十七（上海）资产管理有限公司
-    <img src="images/xing.gif" width="74" height="12" />
-   </div><!--proZt/-->
-  </dd><!--proDlMid/-->
-  <dd class="proDlRight">
-   <a href="proinfo.html"><img src="images/ckxx.jpg" width="177" height="47" /></a>
-  </dd>
-  <div class="clearfix"></div>
- </dl>
- <dl>
-  <dt><a href="proinfo.html"><img src="images/pro1.jpg" width="123" height="150" /></a></dt>
-  <dd class="proDlMid">
-   <h3 class="title3">新方程域秀智享3号私募基金 <span>冯刚</span></h3>
-   <div class="tcyj">
-    <div class="tcyjList tcyjList1">
-     <h4>投资起点</h4>
-     <p class="red">1,000,000.00 </p>
-    </div><!--tcyjList/-->
-    <div class="tcyjList centreText">
-     <h4>产品期限</h4>
-     <p class="red">4年</p>
-    </div><!--tcyjList/-->
-    <div class="tcyjList centreText">
-     <h4>预期收益</h4>
-     <p class="red">0.25%</p>
-    </div><!--tcyjList/-->
-    <div class="tcyjList centreText">
-     <h4>净值</h4>
-     <p class="red">0.20</p>
-    </div><!--tcyjList/-->
-    <div class="clearfix"></div>
-   </div><!--tcyj/-->
-   <div class="proZt">
-    <span>在售</span>
-    十七（上海）资产管理有限公司
-    <img src="images/xing.gif" width="74" height="12" />
+    <img src="images/xing3.gif" width="74" height="12" />
    </div><!--proZt/-->
   </dd><!--proDlMid/-->
   <dd class="proDlRight">
@@ -279,48 +245,114 @@
         type:"post",
         dataType:"json",
         url:"http://localhost:8088/getAllProducts",
-        async:false,
         success:function(data){
             $.each(data,function(index,element) {
-                var jr="<dl>\n" +
-                    "  <dt><a href=\"proinfo.html\"><img src=\"images/pro1.jpg\" width=\"123\" height=\"150\" /></a></dt>\n" +
-                    "  <dd class=\"proDlMid\">\n" +
-                    "   <h3 class=\"title3\">"+element.productname+"<span>"+element.mpid+"</span></h3>\n" +
-                    "   <div class=\"tcyj\">\n" +
-                    "    <div class=\"tcyjList tcyjList1\">\n" +
-                    "     <h4>投资起点</h4>\n" +
-                    "     <p class=\"red\">"+element.pstart+"</p>\n" +
-                    "    </div><!--tcyjList/-->\n" +
-                    "    <div class=\"tcyjList centreText\">\n" +
-                    "     <h4>产品期限</h4>\n" +
-                    "     <p class=\"red\">"+element.plimit+"</p>\n" +
-                    "    </div><!--tcyjList/-->\n" +
-                    "    <div class=\"tcyjList centreText\">\n" +
-                    "     <h4>预期收益</h4>\n" +
-                    "     <p class=\"red\">"+element.pearnings+"</p>\n" +
-                    "    </div><!--tcyjList/-->\n" +
-                    "    <div class=\"tcyjList centreText\">\n" +
-                    "     <h4>净值</h4>\n" +
-                    "     <p class=\"red\">"+element.netvalue+"</p>\n" +
-                    "    </div><!--tcyjList/-->\n" +
-                    "    <div class=\"clearfix\"></div>\n" +
-                    "   </div><!--tcyj/-->\n" +
-                    "   <div class=\"proZt\">\n" +
-                    "    <span>"+element.pstaus+"</span>\n" +
-                         element.company+"\n" +
-                    "   <img src='images\\xing"+element.grade+".gif' width=\"74\" height=\"12\" />\n" +
-                    "   </div><!--proZt/-->\n" +
-                    "  </dd><!--proDlMid/-->\n" +
-                    "  <dd class=\"proDlRight\">\n" +
-                    "   <a href=\"proinfo.html\"><img src=\"images/ckxx.jpg\" width=\"177\" height=\"47\" /></a>\n" +
-                    "  </dd>\n" +
-                    "  <div class=\"clearfix\"></div>\n" +
-                    " </dl>"
-                $("#bigdiv").append(jr);
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    url:"http://localhost:8088/getCustodianlist",
+                    data:{"id":element.mpid},
+                    success:function(data1) {
+                        var jr="<dl>\n" +
+                            "  <dt><a href=\"proinfo.html?id="+element.pid+"\"><img src=\"images/pro1.jpg\" width=\"123\" height=\"150\" /></a></dt>\n" +
+                            "  <dd class=\"proDlMid\">\n" +
+                            "   <h3 class=\"title3\">"+element.productname+"<span>"+data1.redundancyone+"</span></h3>\n" +
+                            "   <div class=\"tcyj\">\n" +
+                            "    <div class=\"tcyjList tcyjList1\">\n" +
+                            "     <h4>投资起点</h4>\n" +
+                            "     <p class=\"red\">"+element.pstart+"</p>\n" +
+                            "    </div><!--tcyjList/-->\n" +
+                            "    <div class=\"tcyjList centreText\">\n" +
+                            "     <h4>产品期限</h4>\n" +
+                            "     <p class=\"red\">"+element.plimit+"</p>\n" +
+                            "    </div><!--tcyjList/-->\n" +
+                            "    <div class=\"tcyjList centreText\">\n" +
+                            "     <h4>预期收益</h4>\n" +
+                            "     <p class=\"red\">"+element.pearnings+"</p>\n" +
+                            "    </div><!--tcyjList/-->\n" +
+                            "    <div class=\"tcyjList centreText\">\n" +
+                            "     <h4>净值</h4>\n" +
+                            "     <p class=\"red\">"+element.netvalue+"</p>\n" +
+                            "    </div><!--tcyjList/-->\n" +
+                            "    <div class=\"clearfix\"></div>\n" +
+                            "   </div><!--tcyj/-->\n" +
+                            "   <div class=\"proZt\">\n" +
+                            "    <span>"+element.pstaus+"</span>\n" +
+                            element.company+"\n" +
+                            "   <img src='images\\xing"+element.grade+".gif' width=\"74\" height=\"12\" />\n" +
+                            "   </div><!--proZt/-->\n" +
+                            "  </dd><!--proDlMid/-->\n" +
+                            "  <dd class=\"proDlRight\">\n" +
+                            "   <a href=\"proinfo.html?id="+element.pid+"\"><img src=\"images/ckxx.jpg\" width=\"177\" height=\"47\" /></a>\n" +
+                            "  </dd>\n" +
+                            "  <div class=\"clearfix\"></div>\n" +
+                            " </dl>"
+                        $("#bigdiv").append(jr);
+                    }
+                    })
             })
-
         }
     })
+
+    function queryField(num,s) {
+        var bum=num;
+        var a = s;
+        $.ajax({
+            type: "post",
+            dataType: "json",
+            url: "http://localhost:8088/getAllProductsByField",
+            data: {"num":num,"s": s},
+            success: function (data) {
+                $("#bigdiv").empty();
+                $.each(data,function(index,element) {
+                    $.ajax({
+                        type:"post",
+                        dataType:"json",
+                        url:"http://localhost:8088/getCustodianlist",
+                        data:{"id":element.mpid},
+                        success:function(data1) {
+                            var jr="<dl>\n" +
+                                "  <dt><a href=\"proinfo.html?id="+element.pid+"\"><img src=\"images/pro1.jpg\" width=\"123\" height=\"150\" /></a></dt>\n" +
+                                "  <dd class=\"proDlMid\">\n" +
+                                "   <h3 class=\"title3\">"+element.productname+"<span>"+data1.redundancyone+"</span></h3>\n" +
+                                "   <div class=\"tcyj\">\n" +
+                                "    <div class=\"tcyjList tcyjList1\">\n" +
+                                "     <h4>投资起点</h4>\n" +
+                                "     <p class=\"red\">"+element.pstart+"</p>\n" +
+                                "    </div><!--tcyjList/-->\n" +
+                                "    <div class=\"tcyjList centreText\">\n" +
+                                "     <h4>产品期限</h4>\n" +
+                                "     <p class=\"red\">"+element.plimit+"</p>\n" +
+                                "    </div><!--tcyjList/-->\n" +
+                                "    <div class=\"tcyjList centreText\">\n" +
+                                "     <h4>预期收益</h4>\n" +
+                                "     <p class=\"red\">"+element.pearnings+"</p>\n" +
+                                "    </div><!--tcyjList/-->\n" +
+                                "    <div class=\"tcyjList centreText\">\n" +
+                                "     <h4>净值</h4>\n" +
+                                "     <p class=\"red\">"+element.netvalue+"</p>\n" +
+                                "    </div><!--tcyjList/-->\n" +
+                                "    <div class=\"clearfix\"></div>\n" +
+                                "   </div><!--tcyj/-->\n" +
+                                "   <div class=\"proZt\">\n" +
+                                "    <span>"+element.pstaus+"</span>\n" +
+                                element.company+"\n" +
+                                "   <img src='images\\xing"+element.grade+".gif' width=\"74\" height=\"12\" />\n" +
+                                "   </div><!--proZt/-->\n" +
+                                "  </dd><!--proDlMid/-->\n" +
+                                "  <dd class=\"proDlRight\">\n" +
+                                "   <a href=\"proinfo.html?id="+element.pid+"\"><img src=\"images/ckxx.jpg\" width=\"177\" height=\"47\" /></a>\n" +
+                                "  </dd>\n" +
+                                "  <div class=\"clearfix\"></div>\n" +
+                                " </dl>"
+                            $("#bigdiv").append(jr);
+                        }
+                    })
+                })
+
+            }
+        })
+    }
 </script>
 </body>
 </html>

@@ -74,4 +74,17 @@ public class Custodianlist implements Serializable {
     public void setCusdel(Integer cusdel) {
         this.cusdel = cusdel;
     }
+
+    @Override
+    public String toString() {
+        return "Custodianlist{" +
+                "mpid=" + mpid +
+                ", position='" + position + '\'' +
+                ", synopsis='" + synopsis + '\'' +
+                ", redundancyone='" + redundancyone + '\'' +
+                ", redundancytwo='" + redundancytwo + '\'' +
+                ", redundancythr='" + redundancythr + '\'' +
+                ", cusdel=" + cusdel +
+                '}';
+    }
 }
