@@ -6,6 +6,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
+
+    User selectByUserName(String username);
+
+    User login(String username,String upassword);
+
     int countByExample(UserExample example);
 
     int deleteByExample(UserExample example);

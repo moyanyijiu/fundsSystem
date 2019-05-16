@@ -32,4 +32,17 @@ public class Test1 {
         }
 
     }
+    @Test
+    public void test2(){
+        List<Products> allProducts = productsService.getAllProducts();
+        for (Products a:allProducts
+             ) {
+            System.out.println(a);
+        }
+    }
+    @Test
+    public void test3(){
+        Products products = productsService.selectByPrimaryKey(2);
+        System.out.println(products);
+    }
 }

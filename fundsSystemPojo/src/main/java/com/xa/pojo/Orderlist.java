@@ -23,6 +23,22 @@ public class Orderlist implements Serializable {
 
     private String redundancythr;
 
+    @Override
+    public String toString() {
+        return "Orderlist{" +
+                "oid=" + oid +
+                ", pid=" + pid +
+                ", ordertime='" + ordertime + '\'' +
+                ", expectedyield='" + expectedyield + '\'' +
+                ", reservationamount='" + reservationamount + '\'' +
+                ", status='" + status + '\'' +
+                ", appointmentdate='" + appointmentdate + '\'' +
+                ", redundancyone='" + redundancyone + '\'' +
+                ", redundancytwo='" + redundancytwo + '\'' +
+                ", redundancythr='" + redundancythr + '\'' +
+                '}';
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getOid() {

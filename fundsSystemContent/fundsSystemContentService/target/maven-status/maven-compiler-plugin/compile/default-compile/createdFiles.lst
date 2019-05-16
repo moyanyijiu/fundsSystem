@@ -1,2 +1,4 @@
 com\xa\service\DeptServerImpl.class
 com\xa\service\ProductsServiceImpl.class
+com\xa\service\OrderListServiceImpl.class
+com\xa\service\UserServiceImpl.class

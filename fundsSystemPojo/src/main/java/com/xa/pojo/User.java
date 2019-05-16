@@ -17,6 +17,19 @@ public class User implements Serializable {
 
     private String redundancythr;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", upassword='" + upassword + '\'' +
+                ", status='" + status + '\'' +
+                ", redundancyone='" + redundancyone + '\'' +
+                ", redundancytwo='" + redundancytwo + '\'' +
+                ", redundancythr='" + redundancythr + '\'' +
+                '}';
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getUid() {

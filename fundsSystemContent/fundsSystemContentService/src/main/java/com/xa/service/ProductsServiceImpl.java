@@ -23,4 +23,9 @@ public class ProductsServiceImpl implements ProductsService {
     public List<Products> getAllProductsByField(Map map) {
         return productsMapper.selectByField(map);
     }
+
+    @Override
+    public Products selectByPrimaryKey(Integer pid) {
+        return productsMapper.selectByPrimaryKey(pid);
+    }
 }

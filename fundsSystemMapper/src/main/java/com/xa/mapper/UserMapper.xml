@@ -85,6 +85,22 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="login" resultType="com.xa.pojo.User">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{arg0,jdbcType=VARCHAR} and
+    upassword = #{arg1,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByUserName" resultType="com.xa.pojo.User">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where username = #{arg0,jdbcType=VARCHAR}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

@@ -11,4 +11,6 @@ public interface ProductsService {
 
     //根据字段查询
     List<Products> getAllProductsByField(Map map);
+
+    Products selectByPrimaryKey(Integer pid);
 }
