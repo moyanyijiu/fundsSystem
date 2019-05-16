@@ -33,5 +33,10 @@ public class ProductsServiceImpl implements ProductsService {
 
         return custodianlistMapper.selectByPrimaryKey(id) ;
     }
+
+    @Override
+    public Products getProductsById(int id) {
+        return productsMapper.selectByPrimaryKey(id);
+    }
 }
 

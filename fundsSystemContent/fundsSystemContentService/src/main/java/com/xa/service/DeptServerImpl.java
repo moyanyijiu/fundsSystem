@@ -15,5 +15,4 @@ public class DeptServerImpl implements DeptServer{
 		List<Dept> allDept = deptMapper.getAllDept();
 		return allDept;
 	}
-
 }

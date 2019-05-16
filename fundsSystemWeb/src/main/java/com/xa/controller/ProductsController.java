@@ -21,6 +21,13 @@ public class ProductsController {
     @Resource
     private ProductsService productsService;
 
+    @PostMapping("/getProductsById")
+    @ResponseBody
+    public Products getProductsById(HttpServletRequest request){
+        int id=Integer.parseInt(request.getParameter("id"));
+        return productsService.getProductsById(id);
+    }
+
     @PostMapping("/getAllProducts")
     @ResponseBody
     public List<Products>  getAllDept(){
@@ -39,7 +46,6 @@ public class ProductsController {
     public List<Products> getAllProductsByField(HttpServletRequest request){
         int num=Integer.parseInt(request.getParameter("num"));
         String s=request.getParameter("s");
-        System.out.println(num+s);
         HashMap<String, String> map = new HashMap<>();
         if (num==1){
             map.put("ptype",s);
