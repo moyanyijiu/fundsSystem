@@ -23,19 +23,16 @@ public class UserController {
     public String userlogin(HttpServletRequest request){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = userService.selectByUserName(username);
-        System.out.println("controller中的user对象为"+user);
-        request.getSession().setAttribute("users",user);
         Subject subject = SecurityUtils.getSubject();
-        System.out.println("走到了usercontroller");
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
        try {
            subject.login(token);
-           System.out.println("进入");
-           return "success";
+           User user = userService.selectByUserName(username);
+           request.getSession().setAttribute("user",user);
+           return "true";
        }catch(AuthenticationException e){
            e.printStackTrace();
-           return "failure";
+           return "false";
        }
 
 

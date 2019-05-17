@@ -70,7 +70,7 @@
 <div class="head">
   <div class="head_nei">
     	<div class="logo"><img src="images/logo.jpg" width="455" height="60"></div>
-        <div class="xiala">
+        <!--<div class="xiala">
             <dl class="select">
             <dt>我的账户</dt>
             <dd>
@@ -83,7 +83,7 @@
             </dd>
         </dl>
 
-        </div>
+        </div>-->
         
   </div>
 </div>
@@ -109,7 +109,7 @@
       <div class="event-item" style="background-color:#c20000; background-image:url(upload/img1.jpg);"><a href="index.html" title="十七资产"></a></div>
       <div class="switch-tab"></div>
       <!--会员登录-->
-      <div class="regbox">
+      <!--<div class="regbox">
      <section class="radiotabs">
 	<input type="radio" name="tab" id="tab1" class="tabs" checked="checked">
 		<label for="tab1">
@@ -132,7 +132,7 @@
         <p class=" mt10 tr"><a href="reg.html" class="button btn-login loginbtn">会员注册</a></p>
 	</section>
 </section>
-</div><!--会员登录-->
+</div>--><!--会员登录-->
     </div>
   </div>
 </div>
@@ -268,8 +268,6 @@
 </div>
 
 <script src="js/jquery.js"></script>
-<<<<<<< HEAD
-=======
 <script>
     $("#dlczs").click(function () {
         var yhm1=$(".yhm").val();
@@ -278,18 +276,17 @@
         $.post("/userlogin",{username:yhm1,password:mm1},function (data) {
             console.log(data);
             alert(data);
-            if("success"===data){
+            /*if(data){
 
                 location.href="user.html";
             }else {
                 console.log("888");
                 location.href="index.html";
-            }
-        });
+            */
+        },"json");
     });
 
 </script>
->>>>>>> ee5588432d3c2f3c79b26e7db9581f844f889994
 <script src="js/banner.js"></script>
 <script src="js/Action.js"></script>
 <script src="js/all.js"></script>

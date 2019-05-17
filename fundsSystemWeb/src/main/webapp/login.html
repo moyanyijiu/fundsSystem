@@ -117,8 +117,10 @@
         <span class="tishi"><img src="images/tishi1.jpg" width="9" height="9" /></span>
         </div>
         <div class="height2"></div>
-        <button type="button" name="" value="" class="button btn-pbtn mt35">会员登录</button>
-        <div class="lgtool clearfix"><span class="fr"><a href="reg.html">个人会员注册</a>  /  <a href="reg-jigou.html">机构会员注册</a></span><a href="set-backpwd.html" class="h">忘记密码？</a></div>
+        <button type="button" name="" id="dlczs" value="" class="button btn-pbtn mt35">会员登录</button>
+          <div class="lgtool clearfix" id="lgt1" style="display: none"><a href="#" class="h" id="errs"></a></div>
+
+          <div class="lgtool clearfix" id="lgt2"><span class="fr"><a href="reg.html">个人会员注册</a>  /  <a href="reg-jigou.html">机构会员注册</a></span><a href="set-backpwd.html" class="h">忘记密码？</a></div>
         <div class="btxt">如需帮助，请拨打客服热线 <span class="tel h">4008-200-025</span></div>
       </div>
     </div>
@@ -141,7 +143,36 @@
     </div>
   </div>
 </div>
+<script src="js/jquery.js"></script>
+<script>
+    $("#dlczs").click(function () {
+        var yhm1=$(".yhm").val();
+        var mm1=$(".mm").val();
+        alert(yhm1+"==="+mm1);
+        $.post("/userlogin",{username:yhm1,password:mm1},function (data) {
+            console.log(data);
+            alert(data);
+            if(data){
 
+                location.href="user.html";
+            }else {
+                alert("false");
+                $("#logt2").css('display','none');
+                $("#logt1").css('display','block');
+                $("#errs").text("用户名或密码错误");
+                setTimeout(function(){
+                    alert("yanshi");
+                    $("#logt2").css('display','block');
+                    $("#logt1").css('display','none');
+                },3000);
+            }
+
+
+
+        },"json");
+    });
+
+</script>
 <script src="js/jquery.js"></script>
 <script src="js/Action.js"></script>
 <script src="js/all.js"></script>
