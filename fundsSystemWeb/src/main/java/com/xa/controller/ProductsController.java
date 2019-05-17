@@ -1,7 +1,9 @@
 package com.xa.controller;
 
 import com.xa.pojo.Custodianlist;
+import com.xa.pojo.Orderlist;
 import com.xa.pojo.Products;
+import com.xa.pojo.User;
 import com.xa.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,28 @@ public class ProductsController {
 
     @Resource
     private ProductsService productsService;
+
+    @PostMapping("/yuYue")
+    @ResponseBody
+    public String yuYue(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        String je=request.getParameter("je");
+        double je1=Double.parseDouble(je);
+        String rq=request.getParameter("rq");
+        int id=Integer.parseInt(request.getParameter("id"));
+        if (je1<1000000.00){
+            return "fail";
+        }
+        Orderlist orderlist = new Orderlist();
+        orderlist.setPid(id);
+        orderlist.setStatus("已预约");
+        orderlist.setReservationamount(je);
+        orderlist.setAppointmentdate(rq);
+        orderlist.setRedundancyone(user.getUid()+"");
+        boolean b = productsService.addOrderList(orderlist);
+        System.out.println(b);
+        return "success";
+    }
 
     @PostMapping("/getProductsById")
     @ResponseBody

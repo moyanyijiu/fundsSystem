@@ -110,16 +110,19 @@
 
  <div class="proinfoRight">
   <h3>预约投资 <span>最小预约金额：100,000.00</span></h3>
-  <form action="#" method="get" class="proInput">
+
+  <form id="myform" class="proInput" >
+      <input id="f1" name="id" style="display: none">
    <label>预约金额：</label>
-   <input type="text" class="inputSt inputYuan" placeholder="请输入金额" />
+   <input name="je" type="text" class="inputSt inputYuan" placeholder="请输入金额" />
    <label>预约签约日：</label>
-    <input id="" class="Wdate inputSt inputDate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>
-   <input type="submit" class="proSub" width="307" height="39" value=" " />
+    <input name="rq" class="Wdate inputSt inputDate" type="text" onfocus="WdatePicker({minDate:'%y-%M-{%d+1}',isShowClear:false,isShowToday:false,readOnly:true})"/>
+   <input onclick="tj()" type="button" class="proSub" width="307" height="39"  />
   </form><!--proInput/-->
  </div><!--proinfoRight/-->
  <div class="clearfix"></div>
 </div>
+
 
 <!--proinfo产品详情/-->
 <div class="proinfoDta width1100">
@@ -180,7 +183,7 @@
       </div>
     </div>
     <div class="qq">
-      <div class="box"><a href="#"><img src="images/下载.png" width="92" height="22"></a></div>
+      <div class="box"><a href="#"><img src="images/xz.png" width="92" height="22"></a></div>
     </div>
     
     <div class="wx">
@@ -212,6 +215,26 @@
 <script>
     var id1=window.location.search.split("=");
     var id=id1[1];
+    $("#f1").val(id)
+
+   function tj(){
+       $.ajax({
+           type:"post",
+           dataType:"text",
+           url:"http://localhost:8088/yuYue",
+           data:$("#myform").serialize(),
+           success:function (data) {
+               if (data=="fail"){
+                   alert("预约金额至少为100,000人民币")
+               }
+            if(data=="success"){
+                alert("预约成功")
+            }
+           }
+       })
+
+   }
+
     $.ajax({
         type: "post",
         dataType: "json",

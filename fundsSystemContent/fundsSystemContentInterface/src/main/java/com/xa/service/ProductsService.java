@@ -2,6 +2,7 @@ package com.xa.service;
 
 import com.sun.org.apache.xpath.internal.operations.String;
 import com.xa.pojo.Custodianlist;
+import com.xa.pojo.Orderlist;
 import com.xa.pojo.Products;
 
 import java.util.List;
@@ -19,5 +20,8 @@ public interface ProductsService {
 
     //根据主键查出一个产品对象
     Products getProductsById(int id);
+
+    //添加预约投资数据的方法
+    boolean addOrderList(Orderlist orderlist);
 
 }
