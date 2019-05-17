@@ -125,102 +125,15 @@
      <th width="95">状态</th>
      <th>操作</th>
     </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="order_site.html" target="_blank">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="order_site.html" target="_blank">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="order_site.html" target="_blank">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="order_site.html" target="_blank">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="#">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="#">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="#">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>2015-05-30</td>
-     <td>0.23</td>
-     <td>1000000 RMB</td>
-     <td>排队中</td>
-     <td>
-      <a href="#">详情</a><br />
-      <a href="#">取消预约</a>
-     </td>
-    </tr>
+
+
+
+
+
+
+
+
+
    </table>
    <div class="manu"><span class="disabled"> <  上一页</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a> ... <a href="#?page=2" class="disabled2">下一页  > </a> <a href="#?page=2" class="disabled2">共98页</a><input type="text" /><a href="#?page=2" class="disabled2">GO</a></div>
   </div><!--memberRbox2/-->
@@ -274,6 +187,51 @@
 </div>
 
 <script src="js/jquery.js"></script>
+<script>
+    $.post("getAllProducts",function (data) {
+        console.log(data);
+    //
+    // <tr>
+    //     <td class="width1">新方程域秀智享3号私募<br />
+    //         基金 KF888</td>
+    //     <td>2015-05-30</td>
+    //     <td>0.23</td>
+    //     <td>1000000 RMB</td>
+    //     <td>排队中</td>
+    //     <td>
+    // <td>
+    // <td>
+    //     <a href="order_site.html" target="_blank">详情</a><br />
+    //         <a href="#">取消预约</a>
+    //         </td>
+
+        $.each(data, function (index, sj) {
+            console.log(sj);
+            var trStr = "<tr>"
+            +"<td class='width1'>" + sj.productname + "</td>"
+            +"<td>"+sj.orderlist.ordertime+"</td>"
+            +"<td>"+sj.orderlist.expectedyield+"</td>"
+            +"<td>"+sj.orderlist.reservationamount+"</td>"
+            +"<td>"+sj.orderlist.status+"</td>"
+
+            +"<td>"
+                +"<a href='order_site.html?idczs="+sj.pid+"'>详情 </a>"
+                    +"<br>"
+            +"<a href='#'> 取消预约</a>"
+            +"</td>"
+
+            +"</tr>"
+
+
+            $("#dingdan").append(trStr);
+
+        })
+
+    })
+
+
+</script>
+
 <script src="js/Action.js"></script>
 <script src="js/all.js"></script>
 </body>

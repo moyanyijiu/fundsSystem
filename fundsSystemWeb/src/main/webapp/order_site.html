@@ -116,24 +116,21 @@
  <div class="membersRight">
   <div class="memberRbox2">
    <h3 class="title5" style="margin-bottom:20px;"><strong>订单详情</strong> <span class="xian2"></span></h3>
-   <table width="868" class="order">
+
+
+   <table id="detailczs" width="868" class="order">
     <tr>
      <th width="253" class="width1">产品名称</th>
      <th width="106">产品代码</th>
      <th width="106">产品类别</th>
      <th width="133">预期收益率</th>
-     <th width="133">预期收益率</th>
+     <th width="133">签约结束日期</th>
      <th width="109">预约金额</th>
      </tr>
-    <tr>
-     <td class="width1">新方程域秀智享3号私募<br />
-基金 KF888</td>
-     <td>test_code</td>
-     <td>PE</td>
-     <td>0.25%</td>
-     <td>2015-04-30</td>
-     <td>10,000,000</td>
-     </tr>
+
+
+
+
    </table>
 <h3 class="title5" style="margin-top:30px; margin-bottom:20px;"><strong>订单追踪</strong> <span class="xian2"></span></h3>
 <div class="order">
@@ -224,6 +221,36 @@
   </div>
 </div>
 <script src="js/jquery.js"></script>
+<script>
+    var idczs= window.location.search.split("=");
+    var id=idczs[1];
+
+    $.post("order_detailczs",{pid:id},function (data) {
+        console.log(data);
+
+    // <tr>
+        //     <td class="width1">新方程域秀智享3号私募<br />
+        //         基金 KF888</td>
+        //     <td>test_code</td>
+        //     <td>PE</td>
+        //     <td>0.25%</td>
+        //     <td>2015-04-30</td>
+        //     <td>10,000,000</td>
+        //     </tr>
+        var dczs="<tr>"
+        +"<td class=\"width1\">"+data.productname+"</td>"
+        +"<td>AAA"+data.pid+"</td>"
+        +"<td>BBB"+data.pid+"</td>"
+        +"<td>"+data.pearnings+"</td>"
+        +"<td>"+data.enddate+"</td>"
+        +"<td>"+data.pstart+"</td>"
+        +"</tr>"
+        $("#detailczs").append(dczs);
+    })
+
+
+
+</script>
 <script src="js/Action.js"></script>
 <script src="js/all.js"></script>
 </body>

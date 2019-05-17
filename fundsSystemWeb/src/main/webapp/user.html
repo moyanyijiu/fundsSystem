@@ -153,8 +153,10 @@
     <dl>
      <dt>首选联络方式：</dt>
      <dd>
-      <select>
+      <select id="tel">
        <option>移动电话</option>
+          <option>固定电话</option>
+
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -164,6 +166,8 @@
      <dd>
       <select>
        <option>时间不限</option>
+          <option>上午</option>
+          <option>下午</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -172,7 +176,8 @@
      <dt>1000万以下：</dt>
      <dd>
       <select>
-       <option>移动电话</option>
+       <option>是</option>
+          <option>否</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -192,7 +197,8 @@
      <dt>职业状况：</dt>
      <dd>
       <select>
-       <option>移动电话</option>
+       <option>就职</option>
+          <option>离职</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -209,6 +215,8 @@
      <dd>
       <select>
        <option>制造</option>
+          <option>互联网</option>
+          <option>服务</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -218,6 +226,8 @@
      <dd>
       <select>
        <option>300万元一下</option>
+          <option>600万元一下</option>
+          <option>900万元一下</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -226,7 +236,9 @@
      <dt>教育程度：</dt>
      <dd>
       <select>
-       <option>中科/预科或以下</option>
+       <option>硕士</option>
+          <option>本科</option>
+          <option>专科</option>
       </select>
      </dd>
      <div class="clearfix"></div>
@@ -285,6 +297,12 @@
   </div>
 </div>
 <script src="js/jquery.js"></script>
+
+<script>
+    var a=$("#tel").val();
+    alert(a);
+
+</script>
 <script src="js/Action.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/all.js"></script>

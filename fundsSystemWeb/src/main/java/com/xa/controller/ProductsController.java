@@ -29,10 +29,23 @@ public class ProductsController {
     }
 
     @PostMapping("/getAllProducts")
-    @ResponseBody
-    public List<Products>  getAllDept(){
+
+    public List<Products> getAllDept() {
+
+        System.out.println(productsService.getAllProducts());
         return productsService.getAllProducts();
     }
+
+    @PostMapping("/order_detailczs")
+    public Products order_detailczs(HttpServletRequest request){
+        String pid1 = request.getParameter("pid");
+        int pid=pid1==null?-1:Integer.parseInt(pid1);
+        System.out.println("后台值为"+pid);
+        Products products = productsService.selectByPrimaryKey(pid);
+        System.out.println("产品细节为："+products);
+        return  products;
+    }
+
 
     @PostMapping("/getCustodianlist")
     @ResponseBody

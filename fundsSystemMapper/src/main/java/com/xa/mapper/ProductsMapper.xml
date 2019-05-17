@@ -47,6 +47,8 @@
     <result column="riskgrade" property="riskgrade" jdbcType="VARCHAR" />
     <result column="biddeadline" property="biddeadline" jdbcType="VARCHAR" />
     <result column="prodel" property="prodel" jdbcType="INTEGER" />
+    <association property="orderlist" column="pid" select="com.xa.mapper.OrderlistMapper.selectByPid"></association>
+
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

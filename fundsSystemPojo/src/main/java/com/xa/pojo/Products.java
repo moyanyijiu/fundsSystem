@@ -93,6 +93,68 @@ public class Products implements Serializable {
 
     private Integer prodel;
 
+    private Orderlist orderlist;
+
+    public Orderlist getOrderlist() {
+        return orderlist;
+    }
+
+    @Override
+    public String toString() {
+        return "Products{" +
+                "pid=" + pid +
+                ", mpid=" + mpid +
+                ", productname='" + productname + '\'' +
+                ", pstart='" + pstart + '\'' +
+                ", plimit='" + plimit + '\'' +
+                ", pearnings='" + pearnings + '\'' +
+                ", netvalue='" + netvalue + '\'' +
+                ", pstaus='" + pstaus + '\'' +
+                ", company='" + company + '\'' +
+                ", grade='" + grade + '\'' +
+                ", organization='" + organization + '\'' +
+                ", trustee='" + trustee + '\'' +
+                ", adviser='" + adviser + '\'' +
+                ", broker='" + broker + '\'' +
+                ", pdeadline='" + pdeadline + '\'' +
+                ", lineof='" + lineof + '\'' +
+                ", lossline='" + lossline + '\'' +
+                ", signingperiod='" + signingperiod + '\'' +
+                ", enddate='" + enddate + '\'' +
+                ", currency='" + currency + '\'' +
+                ", financing='" + financing + '\'' +
+                ", financingname='" + financingname + '\'' +
+                ", raiseway='" + raiseway + '\'' +
+                ", payment='" + payment + '\'' +
+                ", reservationstart='" + reservationstart + '\'' +
+                ", reservationend='" + reservationend + '\'' +
+                ", currentnetworth='" + currentnetworth + '\'' +
+                ", frequency='" + frequency + '\'' +
+                ", phighlights='" + phighlights + '\'' +
+                ", mobility='" + mobility + '\'' +
+                ", joinmoney='" + joinmoney + '\'' +
+                ", coststructure='" + coststructure + '\'' +
+                ", distribution='" + distribution + '\'' +
+                ", pdetail='" + pdetail + '\'' +
+                ", pevaluation='" + pevaluation + '\'' +
+                ", pmaterial='" + pmaterial + '\'' +
+                ", goals='" + goals + '\'' +
+                ", investmentscope='" + investmentscope + '\'' +
+                ", redundancyone='" + redundancyone + '\'' +
+                ", redundancytwo='" + redundancytwo + '\'' +
+                ", redundancythr='" + redundancythr + '\'' +
+                ", ptype='" + ptype + '\'' +
+                ", riskgrade='" + riskgrade + '\'' +
+                ", biddeadline='" + biddeadline + '\'' +
+                ", prodel=" + prodel +
+                ", orderlist=" + orderlist +
+                '}';
+    }
+
+    public void setOrderlist(Orderlist orderlist) {
+        this.orderlist = orderlist;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getPid() {
@@ -455,54 +517,4 @@ public class Products implements Serializable {
         this.prodel = prodel;
     }
 
-    @Override
-    public String toString() {
-        return "Products{" +
-                "pid=" + pid +
-                ", mpid=" + mpid +
-                ", productname='" + productname + '\'' +
-                ", pstart='" + pstart + '\'' +
-                ", plimit='" + plimit + '\'' +
-                ", pearnings='" + pearnings + '\'' +
-                ", netvalue='" + netvalue + '\'' +
-                ", pstaus='" + pstaus + '\'' +
-                ", company='" + company + '\'' +
-                ", grade='" + grade + '\'' +
-                ", organization='" + organization + '\'' +
-                ", trustee='" + trustee + '\'' +
-                ", adviser='" + adviser + '\'' +
-                ", broker='" + broker + '\'' +
-                ", pdeadline='" + pdeadline + '\'' +
-                ", lineof='" + lineof + '\'' +
-                ", lossline='" + lossline + '\'' +
-                ", signingperiod='" + signingperiod + '\'' +
-                ", enddate='" + enddate + '\'' +
-                ", currency='" + currency + '\'' +
-                ", financing='" + financing + '\'' +
-                ", financingname='" + financingname + '\'' +
-                ", raiseway='" + raiseway + '\'' +
-                ", payment='" + payment + '\'' +
-                ", reservationstart='" + reservationstart + '\'' +
-                ", reservationend='" + reservationend + '\'' +
-                ", currentnetworth='" + currentnetworth + '\'' +
-                ", frequency='" + frequency + '\'' +
-                ", phighlights='" + phighlights + '\'' +
-                ", mobility='" + mobility + '\'' +
-                ", joinmoney='" + joinmoney + '\'' +
-                ", coststructure='" + coststructure + '\'' +
-                ", distribution='" + distribution + '\'' +
-                ", pdetail='" + pdetail + '\'' +
-                ", pevaluation='" + pevaluation + '\'' +
-                ", pmaterial='" + pmaterial + '\'' +
-                ", goals='" + goals + '\'' +
-                ", investmentscope='" + investmentscope + '\'' +
-                ", redundancyone='" + redundancyone + '\'' +
-                ", redundancytwo='" + redundancytwo + '\'' +
-                ", redundancythr='" + redundancythr + '\'' +
-                ", ptype='" + ptype + '\'' +
-                ", riskgrade='" + riskgrade + '\'' +
-                ", biddeadline='" + biddeadline + '\'' +
-                ", prodel=" + prodel +
-                '}';
-    }
 }

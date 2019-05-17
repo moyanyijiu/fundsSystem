@@ -12,6 +12,8 @@
     <result column="redundancyone" property="redundancyone" jdbcType="VARCHAR" />
     <result column="redundancytwo" property="redundancytwo" jdbcType="VARCHAR" />
     <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
+
+
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -95,6 +97,14 @@
     from orderlist
     where oid = #{oid,jdbcType=INTEGER}
   </select>
+
+  <select id="selectByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from orderlist
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from orderlist
     where oid = #{oid,jdbcType=INTEGER}

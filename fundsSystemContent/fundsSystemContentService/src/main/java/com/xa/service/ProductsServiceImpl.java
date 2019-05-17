@@ -38,5 +38,9 @@ public class ProductsServiceImpl implements ProductsService {
     public Products getProductsById(int id) {
         return productsMapper.selectByPrimaryKey(id);
     }
-}
 
+    @Override
+    public Products selectByPrimaryKey(Integer pid) {
+        return productsMapper.selectByPrimaryKey(pid);
+    }
+}

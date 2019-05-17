@@ -18,6 +18,8 @@ public interface OrderlistMapper {
 
     List<Orderlist> selectByExample(OrderlistExample example);
 
+    Orderlist selectByPid(int pid);
+
     Orderlist selectByPrimaryKey(Integer oid);
 
     int updateByExampleSelective(@Param("record") Orderlist record, @Param("example") OrderlistExample example);

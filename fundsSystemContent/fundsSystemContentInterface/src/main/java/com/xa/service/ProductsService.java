@@ -20,4 +20,6 @@ public interface ProductsService {
     //根据主键查出一个产品对象
     Products getProductsById(int id);
 
+
+    Products selectByPrimaryKey(Integer pid);
 }

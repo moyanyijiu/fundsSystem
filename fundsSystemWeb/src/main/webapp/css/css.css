@@ -1,6 +1,6 @@
 @import url(public.css);
 /*========== public bg ==========*/
-.ico,.switch-tab a{ background:url(../images/ico-all.png) no-repeat}
+.ico,.switch-tab a{}
 .icon{ background:url(../images/icon.png) no-repeat; display:inline-block;}
 
 /*========== top ==========*/
