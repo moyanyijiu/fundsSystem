@@ -154,4 +154,25 @@ public class Userinfo implements Serializable {
     public void setRedundancythr(String redundancythr) {
         this.redundancythr = redundancythr == null ? null : redundancythr.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Userinfo{" +
+                "uiid=" + uiid +
+                ", uid=" + uid +
+                ", preferredcontact='" + preferredcontact + '\'' +
+                ", contacttime='" + contacttime + '\'' +
+                ", isonethousand=" + isonethousand +
+                ", capid=" + capid +
+                ", vocationalstatus='" + vocationalstatus + '\'' +
+                ", fortheenterprise='" + fortheenterprise + '\'' +
+                ", companytype='" + companytype + '\'' +
+                ", revenue='" + revenue + '\'' +
+                ", educationalstatus='" + educationalstatus + '\'' +
+                ", status=" + status +
+                ", redundancyone='" + redundancyone + '\'' +
+                ", redundancytwo='" + redundancytwo + '\'' +
+                ", redundancythr='" + redundancythr + '\'' +
+                '}';
+    }
 }

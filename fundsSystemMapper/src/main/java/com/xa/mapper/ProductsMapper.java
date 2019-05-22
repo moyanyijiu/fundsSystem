@@ -16,6 +16,8 @@ public interface ProductsMapper {
 
     int insert(Products record);
 
+    List<Products> getProductPQ();
+
     int insertSelective(Products record);
 
     List<Products> selectByExample(ProductsExample example);

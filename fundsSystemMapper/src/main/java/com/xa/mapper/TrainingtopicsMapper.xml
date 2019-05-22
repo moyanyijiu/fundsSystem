@@ -11,6 +11,8 @@
     <result column="tdelete" property="tdelete" jdbcType="INTEGER" />
     <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
   </resultMap>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -92,6 +94,25 @@
     from trainingtopics
     where tid = #{tid,jdbcType=INTEGER}
   </select>
+
+  <select id="getZtByt" resultType="string" parameterType="string">
+    select courseware from trainingtopics where topics=#{topics}
+  </select>
+
+  <select id="selectByTopt" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from trainingtopics
+    <where>
+      <if test="topics !=''">
+        topics=#{topics}
+      </if>
+      <if test="courseware !=''">
+        and courseware=#{courseware}
+      </if>
+    </where>
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from trainingtopics
     where tid = #{tid,jdbcType=INTEGER}

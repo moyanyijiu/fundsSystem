@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -57,11 +57,11 @@
     <ul class="menu">
       	<li><a href="login.html">登陆</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -89,7 +89,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -133,36 +133,42 @@
 
    </table>
 <h3 class="title5" style="margin-top:30px; margin-bottom:20px;"><strong>订单追踪</strong> <span class="xian2"></span></h3>
-<div class="order">
+<div id="orderzz" class="order">
     <dl class="order1">
-     <dt><span class="WdateFmtErr">产品预约</span><br><br>
+     <dt><span id="ors1">产品预约</span><br><br>
 <img src="images/order_12.png" /><br><br>
-<img src="images/paid_03.jpg" /></dt>
+<img id="or1"/></dt>
      <dd>
 
      </dd>
      <div class="clearfix"></div>
     </dl>
     <dl class="order2">
-     <dt><span>合同签订</span><br><br>
-     <img src="images/order_03.png"/></dt>
-     <dd>
+     <dt><span id="ors2">合同签订</span><br><br>
+     <img src="images/order_03.png"/><br><br>
+        <img id="or2"/></dt>
+
+        <dd>
 
      </dd>
      <div class="clearfix"></div>
     </dl>
     <dl class="order3">
-     <dt><span>资金打款</span><br><br>
-     <img src="images/order_06.png" /></dt>
-     <dd>
+     <dt><span id="ors3">资金打款</span><br><br>
+     <img src="images/order_06.png" /><br><br>
+        <img id="or3" /></dt>
+
+        <dd>
 
      </dd>
      <div class="clearfix"></div>
     </dl>
      <dl class="order4">
-     <dt><span>订单结果</span><br><br>
-     <img src="images/order_09.png"/></dt>
-     <dd>
+     <dt><span id="ors4">订单结果</span><br><br>
+     <img src="images/order_09.png"/><br><br>
+         <img id="or4" ></dt>
+
+         <dd>
 
      </dd>
      <div class="clearfix"></div>
@@ -223,10 +229,12 @@
 <script src="js/jquery.js"></script>
 <script>
     var idczs= window.location.search.split("=");
-    var id=idczs[1];
-
-    $.post("order_detailczs",{pid:id},function (data) {
-        console.log(data);
+    var id1=idczs[1];
+    var id=id1.split("&")[0];
+    var st=idczs[2];
+    console.log(id1+"------"+st)
+    $.post("order_detailczs",{"pid":id,"oid":st},function (map) {
+        console.log(map);
 
     // <tr>
         //     <td class="width1">新方程域秀智享3号私募<br />
@@ -237,15 +245,46 @@
         //     <td>2015-04-30</td>
         //     <td>10,000,000</td>
         //     </tr>
-        var dczs="<tr>"
-        +"<td class=\"width1\">"+data.productname+"</td>"
-        +"<td>AAA"+data.pid+"</td>"
-        +"<td>BBB"+data.pid+"</td>"
-        +"<td>"+data.pearnings+"</td>"
-        +"<td>"+data.enddate+"</td>"
-        +"<td>"+data.pstart+"</td>"
-        +"</tr>"
-        $("#detailczs").append(dczs);
+
+        $.each(map,function (key,values) {
+            var dczs="<tr>"
+                +"<td class=\"width1\">"+map[key].productname+"</td>"
+                +"<td>AAA"+map[key].pid+"</td>"
+                +"<td>BBB"+map[key].pid+"</td>"
+                +"<td>"+map[key].pearnings+"</td>"
+                +"<td>"+map[key].enddate+"</td>"
+                +"<td>"+map[key].pstart+"</td>"
+                +"</tr>"
+            $("#detailczs").append(dczs);
+
+            if (key === "已预约" ) {
+                $("#or1").attr("src","images/paid_03.jpg");
+
+                $("#ors1").attr("class","WdateFmtErr")
+            }
+            if (key === "合同签订" ) {
+                $("#or1").attr("src","images/paid_04.jpg");
+                $("#or2").attr("src","images/paid_05.jpg");
+                $("#ors2").attr("class","WdateFmtErr")
+            }
+            if (key === "资金打款" ) {
+                $("#or1").attr("src","images/paid_04.jpg");
+                $("#or2").attr("src","images/paid_04.jpg");
+                $("#or3").attr("src","images/paid_05.jpg");
+                $("#ors3").attr("class","WdateFmtErr")
+            }
+            if (key === "订单结果" ) {
+                $("#or1").attr("src","images/paid_04.jpg");
+                $("#or2").attr("src","images/paid_04.jpg");
+                $("#or3").attr("src","images/paid_04.jpg");
+                $("#or4").attr("src","images/paid_04.jpg");
+                $("#ors4").attr("class","WdateFmtErr")
+            }
+
+
+
+        })
+
     })
 
 

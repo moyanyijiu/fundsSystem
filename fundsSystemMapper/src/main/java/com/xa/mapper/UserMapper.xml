@@ -10,6 +10,30 @@
     <result column="redundancytwo" property="redundancytwo" jdbcType="VARCHAR" />
     <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
   </resultMap>
+  <update id="updateByPrimaryKeySelective4" parameterType="com.xa.pojo.User" >
+    update user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancyone != null" >
+        redundancyone = #{redundancyone,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancytwo != null" >
+        redundancytwo = #{redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr = #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -85,7 +109,6 @@
       order by ${orderByClause}
     </if>
   </select>
-
   <select id="login" resultType="com.xa.pojo.User">
     select
     <include refid="Base_Column_List" />
@@ -93,14 +116,12 @@
     where username = #{arg0,jdbcType=VARCHAR} and
     upassword = #{arg1,jdbcType=VARCHAR}
   </select>
-
   <select id="selectByUserName" resultType="com.xa.pojo.User">
     select
     <include refid="Base_Column_List" />
     from user
     where username = #{arg0,jdbcType=VARCHAR}
   </select>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -256,4 +277,43 @@
       redundancythr = #{redundancythr,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  <!--后台的代码块-->
+  <select id="selectUserDao" resultType="com.xa.pojo.UserDto">
+        SELECT u.uid, u.username, u.upassword, v.identitycardnumber,v.cellphonenumber,v.emile   FROM user u, verificationtable v where u.uid = v.redundancyone;
+    </select>
+  <select id="selectUserlimit" parameterType="java.lang.Integer" resultType="com.xa.pojo.User">
+        select * from user ORDER BY redundancytwo limit #{id}
+    </select>
+
+  <update id="updateOneUser" parameterType="com.xa.pojo.User" >
+    update user
+    <set >
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancyone != null" >
+        redundancyone = #{redundancyone,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancytwo != null" >
+        redundancytwo = #{redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr = #{redundancythr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteOneUser" parameterType="java.lang.Integer" >
+    delete from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+
+
 </mapper>

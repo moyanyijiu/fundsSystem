@@ -1,4 +1,11 @@
 $(function(){
+
+    $.post("getNameaaa",function(data){
+        $(".bnm").empty();
+        $(".bnm").text(data);
+        },"text");
+
+
   $(".show").hover(
     function(){
       var a = $(this).children(".ico").attr("class").split(" ");
@@ -98,4 +105,5 @@ WC.Core={
   DialogClose:function(){
 
   }
+
 }

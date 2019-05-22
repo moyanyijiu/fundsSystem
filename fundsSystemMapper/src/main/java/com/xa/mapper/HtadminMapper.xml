@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xa.mapper.HtadminMapper" >
+  <resultMap id="BaseResultMap" type="com.xa.pojo.Htadmin" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="aprovince" property="aprovince" jdbcType="VARCHAR" />
+    <result column="acity" property="acity" jdbcType="VARCHAR" />
+    <result column="aemail" property="aemail" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="apass" property="apass" jdbcType="VARCHAR" />
+    <result column="adesc" property="adesc" jdbcType="VARCHAR" />
+    <result column="ry" property="ry" jdbcType="VARCHAR" />
+    <result column="workl" property="workl" jdbcType="INTEGER" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, pid, aname, aprovince, acity, aemail, tel, apass, adesc, ry, workl, zt
+  </sql>
+  <select id="selectBypage" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />
+    from htadmin
+    <if test="arg0 != null and arg1 != null and arg1 != 0">
+      limit #{arg0},#{arg1}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xa.pojo.HtadminExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from htadmin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from htadmin
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from htadmin
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xa.pojo.HtadminExample" >
+    delete from htadmin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xa.pojo.Htadmin" >
+    insert into htadmin (aid, pid, aname, 
+      aprovince, acity, aemail, 
+      tel, apass, adesc, 
+      ry, workl, zt)
+    values (#{aid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, 
+      #{aprovince,jdbcType=VARCHAR}, #{acity,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{apass,jdbcType=VARCHAR}, #{adesc,jdbcType=VARCHAR}, 
+      #{ry,jdbcType=VARCHAR}, #{workl,jdbcType=INTEGER}, #{zt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xa.pojo.Htadmin" >
+    insert into htadmin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+      <if test="aprovince != null" >
+        aprovince,
+      </if>
+      <if test="acity != null" >
+        acity,
+      </if>
+      <if test="aemail != null" >
+        aemail,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="apass != null" >
+        apass,
+      </if>
+      <if test="adesc != null" >
+        adesc,
+      </if>
+      <if test="ry != null" >
+        ry,
+      </if>
+      <if test="workl != null" >
+        workl,
+      </if>
+      <if test="zt != null" >
+        zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="aprovince != null" >
+        #{aprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="acity != null" >
+        #{acity,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null" >
+        #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="apass != null" >
+        #{apass,jdbcType=VARCHAR},
+      </if>
+      <if test="adesc != null" >
+        #{adesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ry != null" >
+        #{ry,jdbcType=VARCHAR},
+      </if>
+      <if test="workl != null" >
+        #{workl,jdbcType=INTEGER},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xa.pojo.HtadminExample" resultType="java.lang.Integer" >
+    select count(*) from htadmin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update htadmin
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.aname != null" >
+        aname = #{record.aname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aprovince != null" >
+        aprovince = #{record.aprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acity != null" >
+        acity = #{record.acity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aemail != null" >
+        aemail = #{record.aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.apass != null" >
+        apass = #{record.apass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adesc != null" >
+        adesc = #{record.adesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ry != null" >
+        ry = #{record.ry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workl != null" >
+        workl = #{record.workl,jdbcType=INTEGER},
+      </if>
+      <if test="record.zt != null" >
+        zt = #{record.zt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update htadmin
+    set aid = #{record.aid,jdbcType=INTEGER},
+      pid = #{record.pid,jdbcType=INTEGER},
+      aname = #{record.aname,jdbcType=VARCHAR},
+      aprovince = #{record.aprovince,jdbcType=VARCHAR},
+      acity = #{record.acity,jdbcType=VARCHAR},
+      aemail = #{record.aemail,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      apass = #{record.apass,jdbcType=VARCHAR},
+      adesc = #{record.adesc,jdbcType=VARCHAR},
+      ry = #{record.ry,jdbcType=VARCHAR},
+      workl = #{record.workl,jdbcType=INTEGER},
+      zt = #{record.zt,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xa.pojo.Htadmin" >
+    update htadmin
+    <set >
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="aprovince != null" >
+        aprovince = #{aprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="acity != null" >
+        acity = #{acity,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null" >
+        aemail = #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="apass != null" >
+        apass = #{apass,jdbcType=VARCHAR},
+      </if>
+      <if test="adesc != null" >
+        adesc = #{adesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ry != null" >
+        ry = #{ry,jdbcType=VARCHAR},
+      </if>
+      <if test="workl != null" >
+        workl = #{workl,jdbcType=INTEGER},
+      </if>
+      <if test="zt != null" >
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xa.pojo.Htadmin" >
+    update htadmin
+    set pid = #{pid,jdbcType=INTEGER},
+      aname = #{aname,jdbcType=VARCHAR},
+      aprovince = #{aprovince,jdbcType=VARCHAR},
+      acity = #{acity,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      apass = #{apass,jdbcType=VARCHAR},
+      adesc = #{adesc,jdbcType=VARCHAR},
+      ry = #{ry,jdbcType=VARCHAR},
+      workl = #{workl,jdbcType=INTEGER},
+      zt = #{zt,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+</mapper>

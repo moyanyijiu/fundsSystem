@@ -3,6 +3,8 @@ package com.xa.mapper;
 import com.xa.pojo.Trainingtopics;
 import com.xa.pojo.TrainingtopicsExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TrainingtopicsMapper {
@@ -19,6 +21,10 @@ public interface TrainingtopicsMapper {
     List<Trainingtopics> selectByExample(TrainingtopicsExample example);
 
     Trainingtopics selectByPrimaryKey(Integer tid);
+
+    List<Trainingtopics> selectByTopt(Map map);
+
+    List<String> getZtByt(String t);
 
     int updateByExampleSelective(@Param("record") Trainingtopics record, @Param("example") TrainingtopicsExample example);
 

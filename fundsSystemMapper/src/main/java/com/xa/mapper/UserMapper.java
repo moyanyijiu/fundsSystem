@@ -1,11 +1,14 @@
 package com.xa.mapper;
 
 import com.xa.pojo.User;
+import com.xa.pojo.UserDto;
 import com.xa.pojo.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
+
+    int updateByPrimaryKeySelective4(User user);
 
     User selectByUserName(String username);
 
@@ -32,4 +35,13 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    /*后台代码*/
+    List<UserDto> selectUserDao();
+
+    List<User> selectUserlimit(Integer ids);
+
+    int deleteOneUser(Integer uid);
+
+    int updateOneUser(User user);
 }

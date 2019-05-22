@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -57,11 +57,11 @@
     <ul class="menu">
       	<li><a href="login.html">登陆</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -89,7 +89,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -117,8 +117,8 @@
   <div class="memberRbox2">
    <h3 class="title5"><strong>我的消息</strong> <span class="xian2"></span></h3>
    <div class="znxx">
-          <dl>
-           <dt>
+          <dl id="fg">
+           <!--<dt>
             <strong>恭喜您通过手机认证 </strong>
             <span>2015-03-24 18:42:40</span> <img src="images/weidu.gif" width="27" height="15" />
             <em><b>展开 &gt;</b><i>收起 &or;</i></em>
@@ -127,9 +127,9 @@
            <dd>
             亲爱的wanghe，恭喜您已通过手机认证。您可在[通知设置]选择希望收到的提醒。<br />
 感谢您对爱投资一如既往的支持，希望我们的服务能够带来您财富的增长。 
-           </dd>
+           </dd>-->
            
-           <dt>
+           <!--<dt>
             <strong>恭喜您通过手机认证 </strong>
             <span>2015-03-24 18:42:40</span> <img src="images/weidu.gif" width="27" height="15" />
             <em><b>展开 &gt;</b><i>收起 &or;</i></em>
@@ -158,9 +158,9 @@
            </dt>
            <dd>
             海黄金交易所开户要求及流程： 1、 开户要求：凡属国内热衷或需求黄金、铂金和白银实物与投资投机的机构均可按上海黄金交易所的开户要求由会员协助办理开户手续。 2、 须提供的资料： （1）营业执照 （2）组织机构代码证 （3）税务登记证国税、地税开户完成。
-           </dd>
+           </dd>-->
           </dl>
-          <dl>
+          <!--<dl>
            <dt>
             <strong>恭喜您通过手机认证 </strong>
             <span>2015-03-24 18:42:40</span> <img src="images/weidu.gif" width="27" height="15" />
@@ -202,7 +202,7 @@
            <dd>
             海黄金交易所开户要求及流程： 1、 开户要求：凡属国内热衷或需求黄金、铂金和白银实物与投资投机的机构均可按上海黄金交易所的开户要求由会员协助办理开户手续。 2、 须提供的资料： （1）营业执照 （2）组织机构代码证 （3）税务登记证国税、地税开户完成。
            </dd>
-          </dl>
+          </dl>-->
     </div><!--znxx/-->
    <div class="manu"><span class="disabled"> <  上一页</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a> ... <a href="#?page=2" class="disabled2">下一页  > </a> <a href="#?page=2" class="disabled2">共98页</a><input type="text" /><a href="#?page=2" class="disabled2">GO</a></div>
   </div><!--memberRbox2/-->
@@ -257,6 +257,35 @@
   </div>
 </div>
 <script src="js/jquery.js"></script>
+<script>
+    $.post("usermessage",function(data){
+        $("#fg").empty();
+        $.each(data,function (index,element) {
+
+            var mess="<dt>\n" +
+                "            <strong>"+element.serve+" </strong>\n" +
+                "            <span>"+element.ntime+"</span> <div id='er"+element.nid+"'><img src=\"images/"+element.nstaus+".gif\" width=\"27\" height=\"15\" /></div>\n" +
+                "            <em><b onclick='asd("+element.nid+")'>展开 &gt;</b><i>收起 &or;</i></em>\n" +
+                "            <div class=\"clearfix\"></div>\n" +
+                "           </dt>\n" +
+                "           <dd>\n" +
+                "            "+element.content+"\n" +
+                "           </dd>";
+            $("#fg").append(mess);
+
+        })
+    },"json")
+
+    function asd(q){
+        $.post("newlistlko",{"asd":q},function(data){
+            if (data == 1){
+                $("#er"+q).empty();
+                $("#er"+q).attr("<img src='images/yidu.gif'width='27' height='15'>")
+            }
+        },"text")
+
+    }
+</script>
 <script src="js/Action.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/all.js"></script>

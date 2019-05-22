@@ -47,7 +47,6 @@
     <result column="riskgrade" property="riskgrade" jdbcType="VARCHAR" />
     <result column="biddeadline" property="biddeadline" jdbcType="VARCHAR" />
     <result column="prodel" property="prodel" jdbcType="INTEGER" />
-    <association property="orderlist" column="pid" select="com.xa.mapper.OrderlistMapper.selectByPid"></association>
 
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -135,6 +134,9 @@
     <include refid="Base_Column_List" />
     from products
     where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <select id="getProductPQ"  resultType="products">
+    select mpid,company,pearnings from products order by redundancyone desc limit 0,4
   </select>
   <!--根据三个字段查询-->
   <select id="selectByField" resultType="products">

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -57,11 +57,11 @@
     <ul class="menu">
       	<li><a href="login.html">登陆</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -69,7 +69,7 @@
 <div class="top"></div>
 <div class="head">
   <div class="head_nei">
-    	<div class="logo"><img src="images/logo.jpg" width="455" height="60"></div>
+    	<div class="logo"><font size="60">南窑国际-宏达基金集团</font></div>
         <div class="xiala">
             <dl class="select">
             <dt>我的账户</dt>
@@ -89,7 +89,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -103,7 +103,7 @@
   <div class="touxiang">
    <dl>
     <dt style="background:url(images/touxiang.jpg) center center no-repeat;">&nbsp;</dt>
-    <dd>75988887@qq.com</dd>
+    <dd class="bnm">75988887@qq.com</dd>
    </dl>
   </div><!--touxiang/-->
   <ul class="membersNav">
@@ -129,23 +129,23 @@
     </dl>
     <div class="clearfix"></div>
    </div><!--renzheng/-->
-   <form method="get" action="#" class="set-pwd">
+   <form  id="form1"   method="get" onsubmit="return false" class="set-pwd">
     <dl>
      <dt>当前登录密码：</dt>
-     <dd><input type="text" placeholder="请输入您的密码" /></dd>
+     <dd><input type="password" placeholder="请输入您的密码" name="upassword1"/></dd>
      <div class="clearfix"></div>
     </dl>
     <dl>
      <dt>新登录密码：</dt>
-     <dd><input type="text" placeholder="8-20个字符（字母，数字，符号均可）区分大小写" /></dd>
+     <dd><input type="password" name="upassword2" placeholder="8-20个字符（字母，数字，符号均可）区分大小写" /></dd>
      <div class="clearfix"></div>
     </dl>
     <dl>
      <dt>确认新登录密码：</dt>
-     <dd><input type="text" placeholder="请重复你的新密码" /></dd>
+     <dd><input type="password"  name="upassword3" placeholder="请重复你的新密码"/></dd>
      <div class="clearfix"></div>
     </dl>
-    <div class="set-pwdSub"><input type="image" src="images/xgmm.gif" width="169" height="39" /></div>
+    <div class="set-pwdSub"><p onclick="dainji()"><input type="image" src="images/xgmm.gif" width="169" height="39" /></p></div>
    </form><!--set-pwd/-->
   </div><!--memberRbox2/-->
  </div><!--membersRight/-->
@@ -172,7 +172,7 @@
       </div>
     </div>
     <div class="qq">
-      <div class="box"><a href="#"><img src="images/xz.png" width="92" height="22"></a></div>
+      <div class="box"><a href="#"><img src="images/下载.png" width="92" height="22"></a></div>
     </div>
     
     <div class="wx">
@@ -200,9 +200,43 @@
 </div>
 
 <script src="js/jquery.js"></script>
+<script src="js/jquery-1.8.3.js"></script>
 <script src="js/Action.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/all.js"></script>
 </body>
+<script>
+    var uid  = localStorage.getItem("one");
+    function dainji() {
+        var password1 = $("input[name=upassword1]").val();
+        var password2=  $("input[name=upassword2]").val();
+        var password3 = $("input[name=upassword3]").val();
+
+
+        $.ajax({
+            /*首先查询一个;然后拿到password 作对比； */
+            url: "getOneUser",
+            type: "get",
+            data:{"uid":uid,"password1":password1,"password2":password2,"password3":password3},
+            dataType: "text",
+            success: function (data) {
+                console.log(data)
+                if (data == 2) {
+                    alert("您输入的密码有误");
+                } else if (data == 3) {
+                    alert("您两次输入的新密码不一样,请您核实！！");
+                } else if (data == 1) {
+                    alert("修改成功")
+                } else {
+                    alert("数据库跟新失败！")
+                };
+            }
+        });
+    }
+
+
+
+</script>
+
 </html>
 

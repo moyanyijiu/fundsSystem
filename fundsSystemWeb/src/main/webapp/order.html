@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -57,11 +57,11 @@
     <ul class="menu">
       	<li><a href="login.html">登陆</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -89,7 +89,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -125,6 +125,7 @@
      <th width="95">状态</th>
      <th>操作</th>
     </tr>
+    <tbody id="dingdan">
 
 
 
@@ -132,8 +133,7 @@
 
 
 
-
-
+    </tbody>
    </table>
    <div class="manu"><span class="disabled"> <  上一页</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a><a href="#?page=4">4</a><a href="#?page=5">5</a><a href="#?page=6">6</a><a href="#?page=7">7</a> ... <a href="#?page=2" class="disabled2">下一页  > </a> <a href="#?page=2" class="disabled2">共98页</a><input type="text" /><a href="#?page=2" class="disabled2">GO</a></div>
   </div><!--memberRbox2/-->
@@ -188,7 +188,8 @@
 
 <script src="js/jquery.js"></script>
 <script>
-    $.post("getAllProducts",function (data) {
+    $("#dingdan").empty();
+    $.post("getAllOrder",function (data) {
         console.log(data);
     //
     // <tr>
@@ -205,17 +206,18 @@
     //         <a href="#">取消预约</a>
     //         </td>
 
-        $.each(data, function (index, sj) {
-            console.log(sj);
+
+
+        $.each(data, function (key, values) {
             var trStr = "<tr>"
-            +"<td class='width1'>" + sj.productname + "</td>"
-            +"<td>"+sj.orderlist.ordertime+"</td>"
-            +"<td>"+sj.orderlist.expectedyield+"</td>"
-            +"<td>"+sj.orderlist.reservationamount+"</td>"
-            +"<td>"+sj.orderlist.status+"</td>"
+            +"<td class='width1'>" + key + "</td>"
+            +"<td>"+data[key].ordertime+"</td>"
+            +"<td>"+data[key].expectedyield+"</td>"
+            +"<td>"+data[key].reservationamount+"</td>"
+            +"<td>"+data[key].status+"</td>"
 
             +"<td>"
-                +"<a href='order_site.html?idczs="+sj.pid+"'>详情 </a>"
+                +"<a href='order_site.html?idczs="+data[key].pid+"&oid="+data[key].oid+"'>详情 </a>"
                     +"<br>"
             +"<a href='#'> 取消预约</a>"
             +"</td>"

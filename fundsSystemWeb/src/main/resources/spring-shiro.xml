@@ -6,11 +6,20 @@
 	<!-- shiro在spring中配置的核心, id必须叫shiroFilter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
-		
+		<property name="loginUrl" value="/login.html" />
+		<property name="successUrl" value="/product.html" />
+		<property name="unauthorizedUrl" value="/login.html" />
 		<property name="filterChainDefinitions">
 			<value>
-
-
+				/index.html=anon
+				/training.html=anon
+				/about.html=anon
+				/product.html=anon
+				/proinfo=authc
+				/user.html=authc
+				/order.html=authc
+				/message.html=authc
+				/set.html=authc
 			</value>
 		</property>
 	</bean>

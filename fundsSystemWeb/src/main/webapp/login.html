@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -54,13 +54,13 @@
             <span class="wb_wx"><a href="#"><img src="images/weixin2.png" width="24" height="24"></a></span>
       </div>
     <ul class="menu">
-      	<li><a href="login.html">登陆</a></li>
+      	<li><a href="login.html">登录</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -69,7 +69,7 @@
 <div class="head">
   <div class="head_nei">
     	<div class="logo"><img src="images/logo.jpg" width="455" height="60"></div>
-        <div class="xiala">
+        <div class="xiala" id="">
             <dl class="select">
             <dt>我的账户</dt>
             <dd>
@@ -88,7 +88,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -113,14 +113,14 @@
          <span class="tishi"><img src="images/tishi1.jpg" width="9" height="9" /></span>
         </div>
         <div class="yhm_mm">
-        <input name="" type="text" class="code" style=" float:left;" maxlength="100" autocomplete="off" placeholder="验证码" value=""><img src="images/wyyy_bai.jpg" width="88" height="34">
+            <input name="" type="text" class="code" style=" float:left;" maxlength="100" autocomplete="off" placeholder="验证码" value=""><div id="changecode" ><img id="picture" onclick="change()" src="image.jsp" width="88" height="34"></div>
         <span class="tishi"><img src="images/tishi1.jpg" width="9" height="9" /></span>
         </div>
         <div class="height2"></div>
         <button type="button" name="" id="dlczs" value="" class="button btn-pbtn mt35">会员登录</button>
-          <div class="lgtool clearfix" id="lgt1" style="display: none"><a href="#" class="h" id="errs"></a></div>
+          <div class="lgtool clearfix" id="logt1" style="display: none"><a href="#" class="h" id="errs"></a></div>
 
-          <div class="lgtool clearfix" id="lgt2"><span class="fr"><a href="reg.html">个人会员注册</a>  /  <a href="reg-jigou.html">机构会员注册</a></span><a href="set-backpwd.html" class="h">忘记密码？</a></div>
+          <div class="lgtool clearfix" id="logt2"><span class="fr"><a href="reg.html">个人会员注册</a>  /  <a href="reg-jigou.html">机构会员注册</a></span><a href="set-backpwd.html" class="h">忘记密码？</a></div>
         <div class="btxt">如需帮助，请拨打客服热线 <span class="tel h">4008-200-025</span></div>
       </div>
     </div>
@@ -145,31 +145,52 @@
 </div>
 <script src="js/jquery.js"></script>
 <script>
+
+
+    /*$("#changecode").click(function(){
+        $("#changecode").empty();
+        var co="<img src=\"image.jsp\" width=\"88\" height=\"34\">";
+        $(this).append(co);
+    })*/
+
+    function change()
+    {
+        var pic=document.getElementById("picture");
+        var i=Math.random();//目的是使页面不一样
+        pic.src="image.jsp?id="+i;
+    }
+
+
     $("#dlczs").click(function () {
         var yhm1=$(".yhm").val();
         var mm1=$(".mm").val();
-        alert(yhm1+"==="+mm1);
-        $.post("/userlogin",{username:yhm1,password:mm1},function (data) {
-            console.log(data);
-            alert(data);
-            if(data){
-
-                location.href="user.html";
-            }else {
-                alert("false");
-                $("#logt2").css('display','none');
-                $("#logt1").css('display','block');
+        var coder=$(".code").val();
+        console.log(yhm1+"--"+mm1+"---"+coder);
+        $.post("/userlogin",{username:yhm1,password:mm1,code:coder},function (data) {
+            console.log(data)
+            if(data == "utrue"){
+                location.href="product.html";
+            }else if (data == "ufalse") {
+                $("#logt2").hide();
+                $("#logt1").show();
                 $("#errs").text("用户名或密码错误");
                 setTimeout(function(){
-                    alert("yanshi");
-                    $("#logt2").css('display','block');
-                    $("#logt1").css('display','none');
+                    $("#logt2").show();
+                    $("#logt1").hide();
+                },3000);
+            }else{
+                $("#logt2").hide();
+                $("#logt1").show();
+                $("#errs").text("验证码输入错误");
+                setTimeout(function(){
+                    $("#logt2").show();
+                    $("#logt1").hide();
                 },3000);
             }
 
 
 
-        },"json");
+        },"text");
     });
 
 </script>

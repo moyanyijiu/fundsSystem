@@ -2,8 +2,9 @@ package com.xa.mapper;
 
 import com.xa.pojo.Custodianlist;
 import com.xa.pojo.CustodianlistExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface CustodianlistMapper {
     int countByExample(CustodianlistExample example);
@@ -17,6 +18,8 @@ public interface CustodianlistMapper {
     int insertSelective(Custodianlist record);
 
     List<Custodianlist> selectByExample(CustodianlistExample example);
+
+
 
     Custodianlist selectByPrimaryKey(Integer mpid);
 

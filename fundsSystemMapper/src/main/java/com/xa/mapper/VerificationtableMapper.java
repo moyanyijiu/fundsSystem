@@ -6,6 +6,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface VerificationtableMapper {
+
+    int updateVerificationtable(Verificationtable verificationtable);
+    Verificationtable selectOneVerificationtable(Verificationtable verificationtable);
+
+
     int countByExample(VerificationtableExample example);
 
     int deleteByExample(VerificationtableExample example);

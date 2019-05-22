@@ -16,6 +16,68 @@
     <result column="redundancythr" property="redundancythr" jdbcType="VARCHAR" />
     <result column="verdel" property="verdel" jdbcType="INTEGER" />
   </resultMap>
+
+
+  <!--自生成updateVerificationtable-->
+  <update id="updateVerificationtable" parameterType="com.xa.pojo.Verificationtable" >
+    update verificationtable
+    <set >
+      <if test="cellphonenumber != null" >
+        cellphonenumber = #{cellphonenumber,jdbcType=VARCHAR},
+      </if>
+
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycardnumber != null" >
+        identitycardnumber = #{identitycardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycardphoto != null" >
+        Identitycardphoto = #{identitycardphoto,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationstatus != null" >
+        authenticationstatus = #{authenticationstatus,jdbcType=INTEGER},
+      </if>
+      <if test="phonestaus != null" >
+        phonestaus = #{phonestaus,jdbcType=INTEGER},
+      </if>
+      <if test="emile != null" >
+        emile = #{emile,jdbcType=VARCHAR},
+      </if>
+      <if test="emilestaus != null" >
+        emilestaus = #{emilestaus,jdbcType=INTEGER},
+      </if>
+      <if test="redundancytwo != null" >
+        redundancytwo = #{redundancytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="redundancythr != null" >
+        redundancythr = #{redundancythr,jdbcType=VARCHAR},
+      </if>
+      <if test="verdel != null" >
+        verdel = #{verdel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where redundancyone = #{redundancyone,jdbcType=VARCHAR}
+  </update>
+  <select id="selectOneVerificationtable" parameterType="com.xa.pojo.Verificationtable" resultMap="BaseResultMap" >
+        select
+           vid,
+           name,
+           identitycardnumber,
+           Identitycardphoto,
+           authenticationstatus,
+           cellphonenumber,
+           phonestaus,
+           emile,
+           emilestaus,
+           redundancyone,
+           redundancytwo,
+           redundancythr,
+           verdel
+        from verificationtable
+        where redundancyone = #{redundancyone,jdbcType=VARCHAR}
+      </select>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

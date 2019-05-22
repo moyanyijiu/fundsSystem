@@ -11,7 +11,7 @@
 	
 	<dubbo:application name="fundsSystemContentService"/>
 	
-	<dubbo:registry address="zookeeper://192.168.157.131:2181" />
+	<dubbo:registry address="zookeeper://192.168.157.132:2181" />
 	
 	<dubbo:protocol name="dubbo" port="20881" />
 	
@@ -21,8 +21,19 @@
 
 	<dubbo:service interface="com.xa.service.UserService" ref="userServiceImpl"/>
 
+	<dubbo:service interface="com.xa.service.OrderListService" ref="orderListServiceImpl"/>
 
+	<dubbo:service interface="com.xa.service.SelAlltrain" ref="selAlltrainImpl"/>
 
-	
+	<dubbo:service interface="com.xa.service.HtService" ref="htServiceImpl"/>
+
+	<dubbo:service interface="com.xa.service.VerificationtableService" ref="verificationtableServiceImpl"/>
+
+	<dubbo:service interface="com.xa.service.UserinfoService" ref="userinfoServiceImpl"/>
+
+	<dubbo:service interface="com.xa.service.ICustodianlist" ref="custodianlistServiceImpl"/>
+
+	<dubbo:service interface="com.xa.service.ILlService" ref="llServiceImpl"/>
+
 
 </beans>

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="keywords" content="">
-<meta name="description" content="十七资产">
-<meta name="author" content="十七资产">
+<meta name="description" content="宏达资产">
+<meta name="author" content="宏达资产">
 <link href="css/css.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <meta http-equiv="X-UA-Compatible" content="IE=8" >
@@ -13,7 +13,7 @@
 <![endif]-->
 <!--[if lte IE 6]><meta http-equiv="refresh" content="0;url=IE6/IE6.html"><![endif]-->
 <link href="favicon.ico" rel="SHORTCUT ICON">
-<title>十七资产</title>
+<title>宏达资产</title>
 </head>
 <body>
 <div class="messages">
@@ -57,11 +57,11 @@
     <ul class="menu">
       	<li><a href="login.html">登陆</a></li>
       <li><a href="reg.html">注册</a></li>
-      <li><a href="#">十七APP</a></li>
+      <li><a href="#">宏达APP</a></li>
       <li><a href="help.html">新手帮助</a></li>
       <li><a href="about.html">了解我们</a></li>
-      <li><a href="#">十七金融 </a></li>
-      <li><a href="#">十七论坛</a></li>
+      <li><a href="#">宏达金融 </a></li>
+      <li><a href="#">宏达论坛</a></li>
       
     </ul>
   </div>
@@ -69,7 +69,7 @@
 <div class="top"></div>
 <div class="head">
   <div class="head_nei">
-    	<div class="logo"><img src="images/logo.jpg" width="455" height="60"></div>
+    	<div class="logo"><font size="60">南窑国际-宏达基金集团</font></div>
         <div class="xiala">
             <dl class="select">
             <dt>我的账户</dt>
@@ -89,7 +89,7 @@
 </div>
 <div class="daohang">
 	<ul>
-    	<li><a href="index.html">十七首页</a></li>
+    	<li><a href="index.html">宏达首页</a></li>
         <li><a href="product.html">在线产品</a></li>
         <li><a href="training.html">培训管理</a></li>
         <li><a href="about.html">了解我们</a></li>
@@ -103,7 +103,7 @@
   <div class="touxiang">
    <dl>
     <dt style="background:url(images/touxiang.jpg) center center no-repeat;">&nbsp;</dt>
-    <dd>75988887@qq.com</dd>
+    <dd class="bnm">75988887@qq.com</dd>
    </dl>
   </div><!--touxiang/-->
   <ul class="membersNav">
@@ -116,31 +116,35 @@
  <div class="membersRight">
   <div class="memberRbox2">
    <h3 class="title5"><strong>邮箱认证</strong> <span class="xian2"></span></h3>
-   <form method="get" action="#" class="set-phone">
-    <dl>
-     <dt>邮箱：</dt>
-     <dd><input type="text" /></dd>
-     <div class="clearfix"></div>
-    </dl>
-    <div class="fsyzm">
-     <input type="text" />
-     <button>发送邮箱验证码</button>
-    </div><!--fsyzm/-->
-    <div class="mebText">
-     短信验证码已发送到您填写的邮箱 759****99@qq.com
-（若您60秒内未收到短信  点击    <a href="#">再次发送</a>   ）
-    </div><!--mebText/-->
-    <div class="set-phoneSub"><input type="image" src="images/xiayibu.gif" width="189" height="39" /></div>
+      <div id="d1">
+   <form   id="form1"   onsubmit="return false" method="post" action="#" class="set-phone">
+        <dl>
+         <dt>邮箱：</dt>
+         <dd><input type="text"  name="emile"/>
+             <input type="hidden" id="fuzhi"   name="redundancyone" />
+         </dd>
+         <div class="clearfix"></div>
+        </dl>
+        <div class="fsyzm">
+         <input type="text" />
+         <button>发送邮箱验证码</button>
+        </div><!--fsyzm/-->
+        <div class="mebText">
+         短信验证码已发送到您填写的邮箱 759****99@qq.com
+    （若您60秒内未收到短信  点击    <a href="#">再次发送</a>   ）
+        </div><!--mebText/-->
+        <div class="set-phoneSub"><P id="a6" onclick="login()"><input type="image" src="images/xiayibu.gif" width="189" height="39" /></P></div>
    </form><!--set-pwd/-->
-   <div class="set-pwdWc">
-    <dl>
+      </div>
+   <div id="d2" class="set-pwdWc">
+    <!--<dl>
      <dt><img src="images/duihao.gif" width="86" height="93" /></dt>
      <dd>
       <h3>您的手机已绑定成功！</h3>
 	  绑定成功 <span class="f60">5</span> 秒后返回个人中心页面  点击 <a class="f60" href="#">立即返回</a>
      </dd>
      <div class="clearfix"></div>
-    </dl>
+    </dl>-->
     
    <div class="wancheng"><a href="#"><img src="images/wancheng.gif" width="189" height="39" /></a></div>
    </div><!--set-pwdWc/-->
@@ -169,7 +173,7 @@
       </div>
     </div>
     <div class="qq">
-      <div class="box"><a href="#"><img src="images/xz.png" width="92" height="22"></a></div>
+      <div class="box"><a href="#"><img src="images/下载.png" width="92" height="22"></a></div>
     </div>
     
     <div class="wx">
@@ -185,12 +189,12 @@
   <div class="wrap clearfix">
     <div class="lebox fl">
       <div class="foot-nav f14"><a href="product.html">在线产品</a>   -   <a href="training.html">培训管理</a>   -   <a href="about.html">了解我们</a>   -   <a href="user.html">我的帐户</a></div>
-      地址：上海市普陀区浪拉佛问dsaf伟哥  电话：021-00000000<br>
+      地址：西安市南窑国际101号  电话：021-999999999<br>
       Copyright © 2015 SHIQISUCAI. All rights reserved<br>
-      沪ICP备00011111号
+      陕ICP备00011111号
     </div>
     <div class="tc rbox fr">
-      <p><img src="upload/img2.jpg"></p>
+      <p><img src="upload/weixin4.png" width="100" height="100"></p>
       扫描二维码关注我们的微信<br>更多优惠等你来
     </div>
   </div>
@@ -200,5 +204,68 @@
 <script src="js/banner.js"></script>
 <script src="js/all.js"></script>
 </body>
+<script>
+
+
+    var uid = localStorage.getItem("one");
+    $("#fuzhi").val(uid);
+    $("#d2").hide();
+    $.post("UserIs",{"uid":uid,"judge":"f3"},function (data) {
+        console.log(data);
+        if (data != "null"){
+            $("#a1").val(data);
+            $("#a1").attr("readOnly","true");
+            $("#a6").removeAttr("onclick");
+        }
+    },"text");
+
+    function login() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "post",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/updateVerificationtableService4?judge=f3" ,//url
+            data: $('#form1').serialize(),
+            success: function (result) {
+                if (result==1) {
+
+                    $("#d1").hide();
+                    $("#d2").show();
+                    $("#d2").empty();
+                    if (result == 1) {
+
+                        var t=5;//设定跳转时间
+                        setInterval(refer(),1000);//启动一秒定时
+                        function refer(){
+                            if (t==0){
+                                location.href="user.html";
+                            }
+                            $("#d2").empty();
+                            var fd="<dl>\n" +
+                                "     <dt><img src=\"images/duihao.gif\" width=\"86\" height=\"93\" /></dt>\n" +
+                                "     <dd>\n" +
+                                "      <h3>您的邮箱已绑定成功！</h3>\n" +
+                                "\t  绑定成功 <span class=\"f60\">"+t+"</span> 秒后返回个人中心页面  点击 <a class=\"f60\" href=\"user.html\">立即返回</a>\n" +
+                                "     </dd>\n" +
+                                "     <div class=\"clearfix\"></div>\n" +
+                                "    </dl>\n" +
+                                "    \n" +
+                                "   <div class=\"wancheng\"><a href=\"user.html\"><img src=\"images/wancheng.gif\" width=\"189\" height=\"39\" /></a></div>"
+                                $("#d2").append(fd);
+                            t--;//计数器递减
+                        }
+                    }
+                };
+            },
+            error : function() {
+                alert("信息有误！请您重新输入");
+            }
+        });
+    }
+
+
+</script>
+
+
 </html>
 

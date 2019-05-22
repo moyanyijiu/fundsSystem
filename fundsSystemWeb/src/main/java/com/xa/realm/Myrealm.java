@@ -25,11 +25,9 @@ public class Myrealm extends AuthorizingRealm {
         String username = tk.getUsername();
         char[] password1 = tk.getPassword();
         String password=new String(password1);
-        System.out.println(username+"登陆的用户名和密码："+password+"走Myrealm到这一步");
-
-        User login = userService.login(username, password);
-        System.out.println("shiro认证信息："+login.toString());
-        if(login!=null){
+        /*User login = userService.login(username, password);*/
+        User user = userService.selectByUserName(username);
+        if(user!=null){
             info=new SimpleAuthenticationInfo(username,password,getName());
         }
         return info;
